@@ -22,6 +22,8 @@ Further info:  https://energy.basjes.nl
 License
 =======
 
+![Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](docs/by-nc-nd.eu.svg)
+
     Energy readers and parsers toolkit
     Copyright (C) 2019-2019 Niels Basjes
 

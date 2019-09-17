@@ -1,3 +1,5 @@
+![Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](by-nc-nd.eu.svg)
+
 Energy systems reading toolkit
 =======================
 This is a Java library to make reading data from devices that have a Modbus interface easier.
