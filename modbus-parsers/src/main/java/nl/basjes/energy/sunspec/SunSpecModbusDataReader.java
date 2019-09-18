@@ -102,7 +102,8 @@ public class SunSpecModbusDataReader extends ModBusDataReader {
         while (true) {
             // Read the header of the block
             blockId = readU16(base);
-            if (blockId == null) {
+            if (blockId == null ||
+                blockId == 0) { // Apparently some devices do this incorrectly https://github.com/sunspec/models/issues/44
                 break;
             }
             blockLen = readU16(base + 1);
