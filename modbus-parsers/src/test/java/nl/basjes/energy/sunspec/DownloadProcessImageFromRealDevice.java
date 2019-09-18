@@ -33,7 +33,7 @@ public class DownloadProcessImageFromRealDevice {
 
     @Test
     public void getAllBytesFromRealDevice() throws Exception {
-        SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster("10.22.22.8"));
+        SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster("10.11.12.13"));
 
         dataReader.connect();
 
