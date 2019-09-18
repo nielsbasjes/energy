@@ -1,5 +1,10 @@
 Energy systems reading toolkit
 =======================
+[![Travis Build status](https://api.travis-ci.org/nielsbasjes/energy.png?branch=master)](https://travis-ci.org/nielsbasjes/energy)
+[![Coverage Status](https://coveralls.io/repos/github/nielsbasjes/energy/badge.svg?branch=master)](https://coveralls.io/github/nielsbasjes/energy?branch=master)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=nielsbasjes_energy&metric=alert_status)](https://sonarcloud.io/dashboard?id=nielsbasjes_energy)
+[![Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://img.shields.io/badge/license-CC--BY--NC--ND-yellow)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
 This is a Java library to make reading data from devices that have a Modbus interface easier.
 
 For the actual modbus connection this library relies on https://github.com/steveohara/j2mod
