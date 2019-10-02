@@ -50,7 +50,7 @@ public class ModBusDataReader implements AutoCloseable {
             }
         }
 
-        return master.readInputRegisters(unitId, registerAddress, count);
+        return master.readMultipleRegisters(unitId, registerAddress, count);
     }
 
 //    http://files.sma.de/dl/2585/WEBBOX-MODBUS-TB-en-19.pdf
@@ -88,7 +88,7 @@ public class ModBusDataReader implements AutoCloseable {
         if (!isConnected) {
             throw new ModbusIOException("Not connected");
         }
-        final InputRegister[] registers = master.readInputRegisters(unitId, registerAddress, 2);
+        final InputRegister[] registers = master.readMultipleRegisters(unitId, registerAddress, 2);
         long                  result    = registers[0].getValue() & 0xffff;
         result = result << 16;
         result += registers[1].getValue() & 0xffff;
@@ -104,7 +104,7 @@ public class ModBusDataReader implements AutoCloseable {
         if (!isConnected) {
             throw new ModbusIOException("Not connected");
         }
-        final InputRegister[] registers = master.readInputRegisters(unitId, registerAddress, 2);
+        final InputRegister[] registers = master.readMultipleRegisters(unitId, registerAddress, 2);
 
         int r0 = registers[0].getValue();
         int r1 = registers[1].getValue();
@@ -126,7 +126,7 @@ public class ModBusDataReader implements AutoCloseable {
         if (!isConnected) {
             throw new ModbusIOException("Not connected");
         }
-        final InputRegister[] registers = master.readInputRegisters(unitId, registerAddress, 2);
+        final InputRegister[] registers = master.readMultipleRegisters(unitId, registerAddress, 2);
         long                  result    = registers[0].getValue();// & 0xffff;
         result = result << 16;
         result += registers[1].getValue() & 0xffff;
@@ -137,7 +137,7 @@ public class ModBusDataReader implements AutoCloseable {
         if (!isConnected) {
             throw new ModbusIOException("Not connected");
         }
-        final InputRegister[] registers = master.readInputRegisters(unitId, registerAddress, len);
+        final InputRegister[] registers = master.readMultipleRegisters(unitId, registerAddress, len);
 
         char[] chars = new char[len * 2];
         int offset = 0;
