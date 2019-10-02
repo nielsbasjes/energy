@@ -59,7 +59,9 @@ public class DownloadProcessImageFromRealDevice {
                 .append("    ").append(bytesToHex(blockBytes)).append("\n\n");
         }
 
-        sb  .append("    // The End Model (i.e. \"No more blocks\" marker\n\n")
+        // NOTE: This is the end marker according to the standard.
+        //       Some devices deviate from this, here we assume the standard.
+        sb  .append("    // The End Model (i.e. the standard \"No more blocks\" marker)\n\n")
             .append("    // - BlockId == 0xFFFF == 'NaN'\n")
             .append("    // - BlockLen == 0\n")
             .append("    (byte)0xFF, (byte)0xFF, (byte)0x00, (byte)0x00\n")
