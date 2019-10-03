@@ -17,15 +17,24 @@
 
 package nl.basjes.energy.sunspec;
 
+import com.ghgande.j2mod.modbus.ModbusException;
+import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster;
 import nl.basjes.energy.RunProcessImageAsModbusTCPSlave;
+import nl.basjes.energy.RunSunSpecProcessImageAsModbusTCPSlave;
+import nl.basjes.energy.sunspec.SunSpecModbusDataReader.ModelLocation;
 import org.junit.BeforeClass;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_STARTBASE;
 import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_UNITID;
 
-public class TestBrokenModelListTerminator extends RunProcessImageAsModbusTCPSlave {
+public class TestRealDeviceSolarEdge extends RunSunSpecProcessImageAsModbusTCPSlave {
     @BeforeClass
     public static void startTestSlave() throws Exception {
-        startTestSlave(SunSpecBrokenTerminatorProcessImage.class, SUNSPEC_STANDARD_STARTBASE, SUNSPEC_STANDARD_UNITID);
+        startTestSlave(SunSpecSolarEdgeProcessImage.class, SUNSPEC_STANDARD_STARTBASE, SUNSPEC_STANDARD_UNITID);
     }
 }

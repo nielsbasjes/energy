@@ -33,13 +33,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.InetAddress;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static com.fazecast.jSerialComm.SerialPort.getCommPorts;
-import static nl.basjes.energy.sdm630.FetchSDM630.BAUD_RATE;
 import static nl.basjes.energy.sdm630.FetchSDM630.OPEN_DELAY;
 import static nl.basjes.energy.sdm630.FetchSDM630.PORT_NAME;
 import static nl.basjes.energy.sdm630.FetchSDM630.SUCCESS;

@@ -32,6 +32,9 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.Map;
 
+import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_STARTBASE;
+import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_UNITID;
+
 public class GenerateInfluxDBLineProtocol {
 
     public static final  String ATTRIBUTE_PREFIX = "SDM630|";
@@ -49,7 +52,7 @@ public class GenerateInfluxDBLineProtocol {
         // We assume that between this close and the starting of the slave this port remains free.
 
         // Create your register set
-        ProcessImage image = new SunSpecTestProcessImage(126, 40000);
+        ProcessImage image = new SunSpecTestProcessImage(SUNSPEC_STANDARD_UNITID, SUNSPEC_STANDARD_STARTBASE);
 
         LOG.info("Starting slave");
         // Create a slave to listen on port 502 and create a pool of 5 listener threads

@@ -15,40 +15,57 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
-package nl.basjes.energy.sunspec;
+package nl.basjes.energy;
 
+import com.ghgande.j2mod.modbus.ModbusException;
 import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster;
 import com.ghgande.j2mod.modbus.procimg.ProcessImage;
 import com.ghgande.j2mod.modbus.slave.ModbusSlave;
 import com.ghgande.j2mod.modbus.slave.ModbusSlaveFactory;
+import nl.basjes.energy.sunspec.ParseSunSpec;
+import nl.basjes.energy.sunspec.SunSpecFetcher;
+import nl.basjes.energy.sunspec.SunSpecModbusDataReader;
 import nl.basjes.energy.sunspec.SunSpecModbusDataReader.ModelLocation;
 import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Constructor;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.Map;
 
-public class TestRealDeviceValues {
+public abstract class RunProcessImageAsModbusTCPSlave {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TestRealDeviceValues.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RunProcessImageAsModbusTCPSlave.class);
     private static final String HOST = InetAddress.getLoopbackAddress().getHostAddress();
 
     private static int testport;
 
-    @BeforeClass
-    public static void startTestSlave() throws Exception {
+    public static String getHost() {
+        return HOST;
+    }
+
+    public static int getTestport() {
+        return testport;
+    }
+
+    private static Integer registerBase =-1;
+    private static Integer unitId       =-1;
+
+    public static void startTestSlave(Class<? extends ProcessImage> processImageClass, int registerBase, int unitId) throws Exception {
+
+        final Constructor<? extends ProcessImage> constructor = processImageClass.getConstructor(Integer.class, Integer.class);
+        RunProcessImageAsModbusTCPSlave.registerBase = registerBase;
+        RunProcessImageAsModbusTCPSlave.unitId = unitId;
+        ProcessImage processImage = constructor.newInstance(registerBase, unitId);
+
         // First find a free port.
         ServerSocket serverSocket = new ServerSocket(0);
         testport = serverSocket.getLocalPort();
         serverSocket.close();
         // We assume that between this close and the starting of the slave this port remains free.
-
-        // Create your register set
-        ProcessImage image = new SunSpecSMAProcessImage(126, 40000);
 
         LOG.info("Starting slave");
         // Create a slave to listen on port 502 and create a pool of 5 listener threads
@@ -57,7 +74,7 @@ public class TestRealDeviceValues {
 
         // Add the register set to the slave for unit ID 126
         // Each slave can have multiple process images but they must have a unique Unit ID within the slave
-        slave.addProcessImage(126, image);
+        slave.addProcessImage(unitId, processImage);
 
         // Start the slave listening on the port - this will throw an error if the socket is already in use
         slave.open();
@@ -72,27 +89,4 @@ public class TestRealDeviceValues {
         LOG.info("Done");
     }
 
-    @Test
-    public void getBlockListTest() throws Exception {
-        try(SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(HOST, testport))) {
-            dataReader.connect();
-
-            final Map<Integer, ModelLocation> modelLocations = dataReader.getModelLocations(40000);
-
-            modelLocations.forEach((k,m) -> LOG.info("Model {}: {}", m.id, ParseSunSpec.modelParsers().get(m.id).getDescription()));
-        }
-    }
-
-    @Test
-    public void showAllFields() throws Exception {
-
-        try(SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(HOST, testport))) {
-
-            SunSpecFetcher fetcher = new SunSpecFetcher(dataReader).useAllModels();
-
-            fetcher.refresh();
-
-            LOG.info("ALl data\n{}", fetcher.toString());
-        }
-    }
 }

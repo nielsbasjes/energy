@@ -32,12 +32,15 @@ public class SunSpecModbusDataReader extends ModBusDataReader {
 
     private Map<Integer, ModelLocation> modelLocations;
 
+    public static final int SUNSPEC_STANDARD_STARTBASE  = 40000;
+    public static final int SUNSPEC_STANDARD_UNITID     = 126;
+
     public SunSpecModbusDataReader(AbstractModbusMaster master) throws ModbusException {
-        this(master, 40000, 126);
+        this(master, SUNSPEC_STANDARD_STARTBASE, SUNSPEC_STANDARD_UNITID);
     }
 
     public SunSpecModbusDataReader(AbstractModbusMaster master, int startBase) throws ModbusException {
-        this(master, startBase, 126);
+        this(master, startBase, SUNSPEC_STANDARD_UNITID);
     }
 
     public SunSpecModbusDataReader(AbstractModbusMaster master, int startBase, int deviceId) throws ModbusException {

@@ -22,6 +22,8 @@ import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster;
 import com.ghgande.j2mod.modbus.procimg.ProcessImage;
 import com.ghgande.j2mod.modbus.slave.ModbusSlave;
 import com.ghgande.j2mod.modbus.slave.ModbusSlaveFactory;
+import nl.basjes.energy.RunProcessImageAsModbusTCPSlave;
+import nl.basjes.energy.sunspec.SunSpecSolarEdgeProcessImage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -32,51 +34,22 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.Map;
 
+import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_STARTBASE;
+import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_UNITID;
 import static org.junit.Assert.fail;
 
-public class SDM630Test {
+public class SDM630Test extends RunProcessImageAsModbusTCPSlave {
 
     private static final Logger LOG  = LoggerFactory.getLogger(SDM630Test.class);
-    private static final String HOST = InetAddress.getLoopbackAddress().getHostAddress();
-
-    private static int testport;
 
     @BeforeClass
     public static void startTestSlave() throws Exception {
-        // First find a free port.
-        ServerSocket serverSocket = new ServerSocket(0);
-        testport = serverSocket.getLocalPort();
-        serverSocket.close();
-        // We assume that between this close and the starting of the slave this port remains free.
-
-        // Create your register set
-        ProcessImage image = new SDM630ProcessImage(1, 0);
-
-        LOG.info("Starting slave {}", image.getClass().getSimpleName());
-        // Create a slave to listen on port 502 and create a pool of 5 listener threads
-        // This will create a new slave or return you the same slave already assigned to this port
-        ModbusSlave slave = ModbusSlaveFactory.createTCPSlave(InetAddress.getLoopbackAddress(), testport, 5, false);
-
-        // Add the register set to the slave for unit ID 126
-        // Each slave can have multiple process images but they must have a unique Unit ID within the slave
-        slave.addProcessImage(1, image);
-
-        // Start the slave listening on the port - this will throw an error if the socket is already in use
-        slave.open();
-        Thread.sleep(100);
-        LOG.info("Slave should be running on port {}", testport);
-    }
-
-    @AfterClass
-    public static void stopTestSlave() {
-        LOG.info("Stopping slave");
-        ModbusSlaveFactory.close();
-        LOG.info("Done");
+        startTestSlave(SDM630ProcessImage.class, 0, 1);
     }
 
     @Test
     public void testReadFromAddress() throws Exception {
-        SDM630Reader reader = new SDM630Reader(new ModbusTCPMaster(HOST, testport), 1);
+        SDM630Reader reader = new SDM630Reader(new ModbusTCPMaster(getHost(), getTestport()), 1);
         reader.connect();
 
         boolean failed = false;
@@ -105,7 +78,7 @@ public class SDM630Test {
     @Test
     public void testReadUsingFunctions() throws Exception {
 
-        SDM630Reader reader = new SDM630Reader(new ModbusTCPMaster(HOST, testport), 1);
+        SDM630Reader reader = new SDM630Reader(new ModbusTCPMaster(getHost(), getTestport()), 1);
 
         reader.connect();
 
@@ -203,7 +176,7 @@ public class SDM630Test {
 
     @Test
     public void testReadUsingToMap() throws Exception {
-        try (SDM630Reader reader = new SDM630Reader(new ModbusTCPMaster(HOST, testport), 1)) {
+        try (SDM630Reader reader = new SDM630Reader(new ModbusTCPMaster(getHost(), getTestport()), 1)) {
             final SDM630Reader.SDM630Values values = reader.read();
             values.toMap().forEach((k, v) -> LOG.info("{} = {}", k, v));
         }
@@ -211,7 +184,7 @@ public class SDM630Test {
 
     @Test
     public void testReadUsingToString() throws Exception {
-        try(SDM630Reader reader = new SDM630Reader(new ModbusTCPMaster(HOST, testport), 1)) {
+        try(SDM630Reader reader = new SDM630Reader(new ModbusTCPMaster(getHost(), getTestport()), 1)) {
             LOG.info("\n{}", reader.read().toString());
         }
     }

@@ -77,6 +77,15 @@
       <version>${slf4j.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>nl.basjes.energy</groupId>
+      <artifactId>modbus-energy-parser</artifactId>
+      <version>${project.version}</version>
+      <classifier>tests</classifier>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
   <url>https://energy.basjes.nl</url>
 

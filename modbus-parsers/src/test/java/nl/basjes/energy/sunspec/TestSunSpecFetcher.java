@@ -21,6 +21,7 @@ import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster;
 import com.ghgande.j2mod.modbus.procimg.ProcessImage;
 import com.ghgande.j2mod.modbus.slave.ModbusSlave;
 import com.ghgande.j2mod.modbus.slave.ModbusSlaveFactory;
+import nl.basjes.energy.RunProcessImageAsModbusTCPSlave;
 import nl.basjes.energy.sunspec.SunSpecModbusDataReader.ModelLocation;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -32,54 +33,25 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.Map;
 
+import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_STARTBASE;
+import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_UNITID;
 import static org.junit.Assert.assertEquals;
 
-public class TestSunSpecFetcher {
+public class TestSunSpecFetcher extends RunProcessImageAsModbusTCPSlave {
 
     private static final Logger LOG = LoggerFactory.getLogger(TestSunSpecFetcher.class);
-    private static final String HOST = InetAddress.getLoopbackAddress().getHostAddress();
-
-    private static int testport;
 
     @BeforeClass
     public static void startTestSlave() throws Exception {
-        // First find a free port.
-        ServerSocket serverSocket = new ServerSocket(0);
-        testport = serverSocket.getLocalPort();
-        serverSocket.close();
-        // We assume that between this close and the starting of the slave this port remains free.
-
-        // Create your register set
-        ProcessImage image = new SunSpecTestProcessImage(126, 40000);
-
-        LOG.info("Starting slave");
-        // Create a slave to listen on port 502 and create a pool of 5 listener threads
-        // This will create a new slave or return you the same slave already assigned to this port
-        ModbusSlave slave = ModbusSlaveFactory.createTCPSlave(InetAddress.getLoopbackAddress(), testport, 5, false);
-
-        // Add the register set to the slave for unit ID 126
-        // Each slave can have multiple process images but they must have a unique Unit ID within the slave
-        slave.addProcessImage(126, image);
-
-        // Start the slave listening on the port - this will throw an error if the socket is already in use
-        slave.open();
-        Thread.sleep(100);
-        LOG.info("Slave should be running on port {}", testport);
-    }
-
-    @AfterClass
-    public static void stopTestSlave() {
-        LOG.info("Stopping slave");
-        ModbusSlaveFactory.close();
-        LOG.info("Done");
+        startTestSlave(SunSpecTestProcessImage.class, SUNSPEC_STANDARD_STARTBASE, SUNSPEC_STANDARD_UNITID);
     }
 
     @Test
     public void getBlockListTest() throws Exception {
-        try(SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(HOST, testport))) {
+        try(SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(getHost(), getTestport()))) {
             dataReader.connect();
 
-            final Map<Integer, SunSpecModbusDataReader.ModelLocation> blockLocations = dataReader.getModelLocations(40000);
+            final Map<Integer, SunSpecModbusDataReader.ModelLocation> blockLocations = dataReader.getModelLocations(SUNSPEC_STANDARD_STARTBASE);
 
             int[][] expected = {
                 {   1, 40004,  65 },
@@ -109,7 +81,7 @@ public class TestSunSpecFetcher {
     @Test
     public void sunSpecFetcherTest() throws Exception {
 
-        try(SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(HOST, testport))) {
+        try(SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(getHost(), getTestport()))) {
 
             SunSpecFetcher fetcher = new SunSpecFetcher(dataReader)
                 .useModel(1)
@@ -155,7 +127,7 @@ public class TestSunSpecFetcher {
 
     @Test(expected = UnsupportedOperationException.class)
     public void requestUnsupportedModel() throws Exception {
-        SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(HOST, testport));
+        SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(getHost(), getTestport()));
 
         new SunSpecFetcher(dataReader)
             .useModel(1)
@@ -164,7 +136,7 @@ public class TestSunSpecFetcher {
 
     @Test(expected = UnsupportedOperationException.class)
     public void requestNonExistendModel() throws Exception {
-        SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(HOST, testport));
+        SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(getHost(), getTestport()));
 
         new SunSpecFetcher(dataReader)
             .useModel(1)

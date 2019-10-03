@@ -18,14 +18,16 @@
 package nl.basjes.energy.sunspec;
 
 import nl.basjes.energy.RunProcessImageAsModbusTCPSlave;
+import nl.basjes.energy.RunSunSpecProcessImageAsModbusTCPSlave;
 import org.junit.BeforeClass;
 
 import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_STARTBASE;
 import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_UNITID;
 
-public class TestBrokenModelListTerminator extends RunProcessImageAsModbusTCPSlave {
+public class TestRealDeviceSMASunnyBoy extends RunSunSpecProcessImageAsModbusTCPSlave {
+
     @BeforeClass
-    public static void startTestSlave() throws Exception {
-        startTestSlave(SunSpecBrokenTerminatorProcessImage.class, SUNSPEC_STANDARD_STARTBASE, SUNSPEC_STANDARD_UNITID);
+    public static void setupProcessImage() throws Exception {
+        startTestSlave(SunSpecSMAProcessImage.class, SUNSPEC_STANDARD_STARTBASE, SUNSPEC_STANDARD_UNITID);
     }
 }

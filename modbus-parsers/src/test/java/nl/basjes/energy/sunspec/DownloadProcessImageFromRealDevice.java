@@ -26,11 +26,13 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
-@Ignore
+import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_STARTBASE;
+
 public class DownloadProcessImageFromRealDevice {
 
     private static final Logger LOG = LoggerFactory.getLogger(DownloadProcessImageFromRealDevice.class);
 
+    @Ignore
     @Test
     public void getAllBytesFromRealDevice() throws Exception {
         SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster("10.11.12.13"));
@@ -45,7 +47,7 @@ public class DownloadProcessImageFromRealDevice {
 
         sb  .append("byte[] bytes = {\n")
             .append("    // The SunS header\n")
-            .append("    ").append(bytesToHex(dataReader.getRawRegisterBytes(40000, 2))).append("\n\n");
+            .append("    ").append(bytesToHex(dataReader.getRawRegisterBytes(SUNSPEC_STANDARD_STARTBASE, 2))).append("\n\n");
 
         for (ModelLocation modelLocation: modelLocations.values()) {
             LOG.info("Reading bytes for Model {}: Start {} Size {}", modelLocation.id, modelLocation.registerBase, modelLocation.len);
@@ -76,6 +78,7 @@ public class DownloadProcessImageFromRealDevice {
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
     private String bytesToHex(byte[] bytes) {
         StringBuilder sb = new StringBuilder(bytes.length * 15);
+        int i = 0;
         for (byte aByte : bytes) {
             int v = aByte & 0xFF;
             sb
@@ -83,6 +86,10 @@ public class DownloadProcessImageFromRealDevice {
                 .append(HEX_ARRAY[v >>> 4])
                 .append(HEX_ARRAY[v & 0x0F])
                 .append(", ");
+            i++;
+            if (i%8 == 0) {
+                sb.append("\n    ");
+            }
         }
         return sb.toString();
     }

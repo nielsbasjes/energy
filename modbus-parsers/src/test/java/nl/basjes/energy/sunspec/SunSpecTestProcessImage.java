@@ -19,16 +19,15 @@ package nl.basjes.energy.sunspec;
 
 import com.ghgande.j2mod.modbus.procimg.SimpleInputRegister;
 import com.ghgande.j2mod.modbus.procimg.SimpleProcessImage;
+import nl.basjes.energy.AbstractSunSpecProcessImage;
 
-public class SunSpecTestProcessImage extends SimpleProcessImage {
+public class SunSpecTestProcessImage extends AbstractSunSpecProcessImage {
 
-    public SunSpecTestProcessImage(int unit, int offset) {
-        super(unit);
-        CreateSunSpecTestRegisters(offset);
+    public SunSpecTestProcessImage(Integer offset, Integer unit) {
+        super(offset, unit);
     }
 
-    private void CreateSunSpecTestRegisters(int offset) {
-
+    public byte[] getRawBytes() {
         byte[] bytes = {
             // Test data copied from https://github.com/sunspec/device-webprobe/blob/master/modsim/mbmap_test_device.xml
 
@@ -80,15 +79,7 @@ public class SunSpecTestProcessImage extends SimpleProcessImage {
             // - BlockLen == 0
             (byte)0xFF, (byte)0xFF, (byte)0x00, (byte)0x00
         };
-
-        int i = 0;
-        int register = offset;
-        while ( i < bytes.length) {
-            byte byte1 = bytes[i++];
-            byte byte2 = bytes[i++];
-            addInputRegister(register++, new SimpleInputRegister(byte1, byte2));
-        }
-
+        return bytes;
     }
 
 }
