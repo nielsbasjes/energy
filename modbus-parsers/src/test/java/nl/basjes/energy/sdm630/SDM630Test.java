@@ -19,23 +19,12 @@ package nl.basjes.energy.sdm630;
 
 import com.ghgande.j2mod.modbus.ModbusException;
 import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster;
-import com.ghgande.j2mod.modbus.procimg.ProcessImage;
-import com.ghgande.j2mod.modbus.slave.ModbusSlave;
-import com.ghgande.j2mod.modbus.slave.ModbusSlaveFactory;
 import nl.basjes.energy.RunProcessImageAsModbusTCPSlave;
-import nl.basjes.energy.sunspec.SunSpecSolarEdgeProcessImage;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.util.Map;
-
-import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_STARTBASE;
-import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_UNITID;
 import static org.junit.Assert.fail;
 
 public class SDM630Test extends RunProcessImageAsModbusTCPSlave {

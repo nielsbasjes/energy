@@ -17,7 +17,6 @@
 
 package nl.basjes.energy.sunspec;
 
-import nl.basjes.energy.RunProcessImageAsModbusTCPSlave;
 import nl.basjes.energy.RunSunSpecProcessImageAsModbusTCPSlave;
 import org.junit.BeforeClass;
 

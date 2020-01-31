@@ -24,6 +24,7 @@ import com.ghgande.j2mod.modbus.slave.ModbusSlaveFactory;
 import nl.basjes.energy.sunspec.SunSpecTestProcessImage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,6 +87,7 @@ public class GenerateInfluxDBLineProtocol {
             .replaceAll("[^a-zA-Z0-9_]", "_");
     }
 
+    @Ignore
     @Test
     public void testCreateInfluxDBLineProtocol() throws Exception {
         try (SDM630Reader reader = new SDM630Reader(new ModbusTCPMaster(HOST, testport), 1)) {

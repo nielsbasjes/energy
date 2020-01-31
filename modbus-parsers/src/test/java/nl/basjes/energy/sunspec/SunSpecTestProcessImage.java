@@ -17,8 +17,6 @@
 
 package nl.basjes.energy.sunspec;
 
-import com.ghgande.j2mod.modbus.procimg.SimpleInputRegister;
-import com.ghgande.j2mod.modbus.procimg.SimpleProcessImage;
 import nl.basjes.energy.AbstractSunSpecProcessImage;
 
 public class SunSpecTestProcessImage extends AbstractSunSpecProcessImage {

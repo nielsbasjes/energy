@@ -18,19 +18,13 @@
 package nl.basjes.energy.sunspec;
 
 import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster;
-import com.ghgande.j2mod.modbus.procimg.ProcessImage;
-import com.ghgande.j2mod.modbus.slave.ModbusSlave;
-import com.ghgande.j2mod.modbus.slave.ModbusSlaveFactory;
 import nl.basjes.energy.RunProcessImageAsModbusTCPSlave;
 import nl.basjes.energy.sunspec.SunSpecModbusDataReader.ModelLocation;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.util.Map;
 
 import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_STARTBASE;

@@ -17,8 +17,6 @@
 
 package nl.basjes.energy.sdm630;
 
-import com.ghgande.j2mod.modbus.procimg.SimpleInputRegister;
-import com.ghgande.j2mod.modbus.procimg.SimpleProcessImage;
 import nl.basjes.energy.AbstractSunSpecProcessImage;
 
 public class SDM630ProcessImage extends AbstractSunSpecProcessImage {

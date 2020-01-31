@@ -17,24 +17,16 @@
 
 package nl.basjes.energy;
 
-import com.ghgande.j2mod.modbus.ModbusException;
-import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster;
 import com.ghgande.j2mod.modbus.procimg.ProcessImage;
 import com.ghgande.j2mod.modbus.slave.ModbusSlave;
 import com.ghgande.j2mod.modbus.slave.ModbusSlaveFactory;
-import nl.basjes.energy.sunspec.ParseSunSpec;
-import nl.basjes.energy.sunspec.SunSpecFetcher;
-import nl.basjes.energy.sunspec.SunSpecModbusDataReader;
-import nl.basjes.energy.sunspec.SunSpecModbusDataReader.ModelLocation;
 import org.junit.AfterClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Constructor;
 import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.util.Map;
 
 public abstract class RunProcessImageAsModbusTCPSlave {
 

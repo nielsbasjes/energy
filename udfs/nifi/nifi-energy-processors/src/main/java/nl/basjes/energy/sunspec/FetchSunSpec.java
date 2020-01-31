@@ -46,6 +46,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_STARTBASE;
+import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_UNITID;
 import static org.apache.nifi.annotation.behavior.InputRequirement.Requirement.INPUT_FORBIDDEN;
 
 @Tags({"input", "ingest", "fetch", "energy", "SunSpec"})
@@ -73,6 +75,24 @@ public class FetchSunSpec extends AbstractProcessor {
         .required(true)
         .defaultValue("502")
         .addValidator(StandardValidators.PORT_VALIDATOR)
+        .build();
+
+    public static final PropertyDescriptor SUNSPEC_REGISTER_BASE = new PropertyDescriptor
+        .Builder().name("SUNSPEC_REGISTER_BASE")
+        .displayName("The SunSpec start register")
+        .description("The ModBus register address where the SunSpec header resides.")
+        .required(true)
+        .defaultValue(String.valueOf(SUNSPEC_STANDARD_STARTBASE))
+        .addValidator(StandardValidators.POSITIVE_INTEGER_VALIDATOR)
+        .build();
+
+    public static final PropertyDescriptor SUNSPEC_UNITID = new PropertyDescriptor
+        .Builder().name("SUNSPEC_UNITID")
+        .displayName("The SunSpec unid id")
+        .description("The ModBus unitid where the SunSpec registers reside.")
+        .required(true)
+        .defaultValue(String.valueOf(SUNSPEC_STANDARD_UNITID))
+        .addValidator(StandardValidators.POSITIVE_INTEGER_VALIDATOR)
         .build();
 
     public static final PropertyDescriptor FETCH_INTERVAL = new PropertyDescriptor
@@ -104,6 +124,8 @@ public class FetchSunSpec extends AbstractProcessor {
         descriptors.add(HOSTNAME);
         descriptors.add(PORT);
         descriptors.add(FETCH_INTERVAL);
+        descriptors.add(SUNSPEC_REGISTER_BASE);
+        descriptors.add(SUNSPEC_UNITID);
 
         for (Map.Entry<Integer, ModelParser> entry : ParseSunSpec.modelParsers().entrySet()) {
             ModelParser m = entry.getValue();
@@ -168,8 +190,13 @@ public class FetchSunSpec extends AbstractProcessor {
             String hostname = context.getProperty(HOSTNAME).getValue();
             Integer port = context.getProperty(PORT).asInteger();
             fetchInterval = context.getProperty(FETCH_INTERVAL).asLong();
+            Integer registerBase = context.getProperty(SUNSPEC_REGISTER_BASE).asInteger();
+            Integer unitId = context.getProperty(SUNSPEC_UNITID).asInteger();
 
-            dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(hostname, port));
+            dataReader = new SunSpecModbusDataReader(
+                new ModbusTCPMaster(hostname, port),
+                registerBase, unitId
+                );
 
             fetcher = new SunSpecFetcher(dataReader);
 

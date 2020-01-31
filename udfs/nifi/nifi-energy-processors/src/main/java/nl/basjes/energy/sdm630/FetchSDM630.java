@@ -18,7 +18,6 @@ package nl.basjes.energy.sdm630;
 
 import com.ghgande.j2mod.modbus.ModbusException;
 import com.ghgande.j2mod.modbus.facade.ModbusSerialMaster;
-import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster;
 import com.ghgande.j2mod.modbus.util.SerialParameters;
 import nl.basjes.energy.sdm630.SDM630Reader.SDM630Values;
 import nl.basjes.energy.sdm630.SDM630Reader.SDM630Values.Value;
@@ -43,7 +42,6 @@ import org.apache.nifi.processor.Relationship;
 import org.apache.nifi.processor.exception.ProcessException;
 import org.apache.nifi.processor.util.StandardValidators;
 
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;

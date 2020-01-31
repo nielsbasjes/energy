@@ -19,22 +19,31 @@ package nl.basjes.energy.sunspec;
 
 import com.ghgande.j2mod.modbus.ModbusException;
 import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster;
-import nl.basjes.energy.RunProcessImageAsModbusTCPSlave;
 import nl.basjes.energy.RunSunSpecProcessImageAsModbusTCPSlave;
-import nl.basjes.energy.sunspec.SunSpecModbusDataReader.ModelLocation;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.Map;
 
 import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_STARTBASE;
 import static nl.basjes.energy.sunspec.SunSpecModbusDataReader.SUNSPEC_STANDARD_UNITID;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestRealDeviceSolarEdge extends RunSunSpecProcessImageAsModbusTCPSlave {
     @BeforeClass
     public static void startTestSlave() throws Exception {
         startTestSlave(SunSpecSolarEdgeProcessImage.class, SUNSPEC_STANDARD_STARTBASE, SUNSPEC_STANDARD_UNITID);
     }
+
+    @Test
+    public void verifyTheValues() throws ModbusException, MissingMandatoryFieldException {
+        try(SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(getHost(), getTestport()))) {
+            SunSpecFetcher fetcher = new SunSpecFetcher(dataReader).useAllModels();
+            fetcher.refresh();
+
+            assertEquals("SolarEdge ", fetcher.model_1.getManufacturer());
+            assertEquals("SE3000H-RW000BNN4", fetcher.model_1.getModel());
+            assertEquals(509.20, fetcher.model_101.getWatts(), 0.0001);
+            assertEquals(38.14, fetcher.model_101.getHeatSinkTemperature(), 0.0001);
+        }
+    }
+
 }
