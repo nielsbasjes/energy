@@ -39,6 +39,16 @@ public class ModBusDataReader implements AutoCloseable {
     }
 
     InputRegister[] read(int registerAddress, int count) throws ModbusException {
+        try {
+            return readWithoutRetry(registerAddress, count);
+        }
+        catch (Exception e) {
+            isConnected = false;
+            return readWithoutRetry(registerAddress, count);
+        }
+    }
+
+    private InputRegister[] readWithoutRetry(int registerAddress, int count) throws ModbusException {
         if (!isConnected) {
             try {
                 connect();
