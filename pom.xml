@@ -497,6 +497,7 @@
             <!-- Files that cannot be 'polluted' -->
             <exclude>CNAME</exclude>
             <exclude>.github/**</exclude>
+            <exclude>*.json</exclude>
             <exclude>generate-sunspec-parser/src/main/resources/models/**</exclude>
             <exclude>**/*.csv</exclude>
             <!-- Test and demo input files -->
