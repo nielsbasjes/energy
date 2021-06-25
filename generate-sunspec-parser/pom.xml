@@ -31,7 +31,7 @@
   <description>A library to read Modbus based energy systems.</description>
 
   <properties>
-    <antlr.version>4.9.2</antlr.version>
+    <antlr.version>4.7.2</antlr.version>
     <antlr4-pvisitor.version>0.1-${antlr.version}</antlr4-pvisitor.version>
     <spring.version>5.3.8</spring.version>
   </properties>
