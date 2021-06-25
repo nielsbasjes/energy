@@ -55,7 +55,7 @@
 -->
     <!-- Apache Nifi -->
     <!-- We use Apache Nifi 1.7.0 instead of the latest version so we can use this with Apache MiNiFi.-->
-    <nifi.version>1.13.2</nifi.version>
+    <nifi.version>1.7.0</nifi.version>
 
     <!-- ============================================== -->
 
