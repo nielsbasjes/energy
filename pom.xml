@@ -61,7 +61,7 @@
 
     <checkstyle-plugin.version>3.1.2</checkstyle-plugin.version>
     <checkstyle.version>8.43</checkstyle.version>
-    <slf4j.version>1.7.30</slf4j.version>
+    <slf4j.version>1.7.31</slf4j.version>
     <rat.version>0.13</rat.version>
     <jacoco.version>0.8.7</jacoco.version>
     <junit5.version>5.7.2</junit5.version>
@@ -442,7 +442,7 @@
           <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-core</artifactId>
-            <version>1.9.1</version>
+            <version>1.10</version>
             <exclusions>
               <exclusion>
                 <groupId>xerces</groupId>
