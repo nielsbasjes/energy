@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-name: Splittable GZip
+name: Energy
 
 on:
   push:
@@ -53,3 +53,9 @@ jobs:
 
     - name: Build
       run: mvn -B install
+
+    - name: Codecov
+      uses: codecov/codecov-action@v1.5.2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+
