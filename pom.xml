@@ -39,6 +39,9 @@
     <jdkLevel>1.8</jdkLevel>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    <!-- In order for everything to work correctly we need at least this version of maven. -->
+    <maven.minimal.version>3.5.2</maven.minimal.version>
+
     <!-- https://github.com/steveohara/j2mod -->
     <j2mod.version>2.5.5</j2mod.version>
     <!-- ============================================== -->
@@ -54,8 +57,7 @@
     <beam.version>2.13.0</beam.version>
 -->
     <!-- Apache Nifi -->
-    <!-- We use Apache Nifi 1.7.0 instead of the latest version so we can use this with Apache MiNiFi.-->
-    <nifi.version>1.7.0</nifi.version>
+    <nifi.version>1.14.0</nifi.version>
 
     <!-- ============================================== -->
 
@@ -422,8 +424,12 @@
             </goals>
             <configuration>
               <rules>
+                <requireJavaVersion>
+                  <version>[11,)</version>
+                  <message>Although the target JVM is JRE 8, the build MUST be done with JDK 11 or higher.</message>
+                </requireJavaVersion>
                 <requireMavenVersion>
-                  <version>[3.3,)</version>
+                  <version>[${maven.minimal.version},)</version>
                   <message>You must use a newer version of Maven</message>
                 </requireMavenVersion>
               </rules>

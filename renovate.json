@@ -16,13 +16,6 @@
       "enabled": false
     },
     {
-      "description": "Disable automatic updates for Nifi because we need MiNiFi",
-      "matchPackagePrefixes": ["org.apache.nifi"],
-      "matchCurrentVersion": "[1.7.0]",
-      "matchUpdateTypes": ["major", "minor", "patch", "pin"],
-      "enabled": false
-    },
-    {
       "description": "Disable automatic updates for the Antlr because of the very tightly coupled visitor",
       "matchPackagePrefixes": ["nl.basjes.antlr", "org.antlr"],
       "matchUpdateTypes": ["major", "minor", "patch", "pin"],
