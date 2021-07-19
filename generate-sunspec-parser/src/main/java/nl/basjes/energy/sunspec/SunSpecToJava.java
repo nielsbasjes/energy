@@ -1,6 +1,6 @@
 /*
  * Energy readers and parsers toolkit
- * Copyright (C) 2019-2019 Niels Basjes
+ * Copyright (C) 2019-2021 Niels Basjes
  *
  * This work is licensed under the Creative Commons
  * Attribution-NonCommercial-NoDerivatives 4.0 International License.
@@ -703,7 +703,7 @@ public class SunSpecToJava {
     private static final String header = "/*\n" +
         " *\n" +
         " * Energy readers and parsers toolkit\n" +
-        " * Copyright (C) 2019-2019 Niels Basjes\n" +
+        " * Copyright (C) 2019-2021 Niels Basjes\n" +
         " *\n" +
         " * This work is licensed under the Creative Commons\n" +
         " * Attribution-NonCommercial-NoDerivatives 4.0 International License.\n" +

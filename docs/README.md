@@ -10,7 +10,7 @@ This library does the mapping from the binary modbus registers to meaningful var
 
 Currently two mappings have been written
 
-- Solar inverters conforming to the SunSpec specification 
+- Solar inverters conforming to the SunSpec specification
 - The Eastron SDM630 Modbus powermeter
 
 
@@ -24,16 +24,16 @@ Based on the official specifications
 ===
 Sunspec
 --
-Sunspec is really big, it contains over 90 Models each consisting of a lot of attirbutes. 
+Sunspec is really big, it contains over 90 Models each consisting of a lot of attirbutes.
 In addition some attributes are actually enums, bitmaps or variables that must be scaled based on the value in another variable.
 
-To be as complete and as close to the specification as possible this project actually generates 
-the parsing code straight from the official Sunspec specification XMLs hosted at 
+To be as complete and as close to the specification as possible this project actually generates
+the parsing code straight from the official Sunspec specification XMLs hosted at
 https://github.com/sunspec/models .
 
 To avoid build problems these specifications have been included in this repo using 'git subtree'.
 
-Eastron SDM630 Modbus 
+Eastron SDM630 Modbus
 --
 The Eastron SDM630 Modbus is based on these specifications: http://www.eastroneurope.com/media/_system/tech_specs/3924/SDM630%20Modbus-Protocol.pdf
 
@@ -58,9 +58,9 @@ Using it in your project
       <artifactId>sunspec</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
-  
+
 Make the connection
-    
+
     try(SunSpecModbusDataReader dataReader = new SunSpecModbusDataReader(new ModbusTCPMaster(hostname))) {
 
 Determine the available models
@@ -100,7 +100,7 @@ The values have been interpreted and cleaned.
 
 So for example the scalefactors are hidden and have been applied to the appropriate values (returning a Double).
 
-All bitmasks and enums have been generated into specific Java enums. 
+All bitmasks and enums have been generated into specific Java enums.
 A bitmask is returned as an EnumSet of those enum values.
 
 UDFs
@@ -121,10 +121,10 @@ License
 =======
 
     Energy readers and parsers toolkit
-    Copyright (C) 2019-2019 Niels Basjes
+    Copyright (C) 2019-2021 Niels Basjes
 
-    This work is licensed under the Creative Commons 
-    Attribution-NonCommercial-NoDerivatives 4.0 International License. 
+    This work is licensed under the Creative Commons
+    Attribution-NonCommercial-NoDerivatives 4.0 International License.
 
     You may not use this file except in compliance with the License.
     You may obtain a copy of the License at

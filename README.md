@@ -13,7 +13,7 @@ This library does the mapping from the binary modbus registers to meaningful var
 
 Currently two mappings have been written
 
-- Solar inverters conforming to the SunSpec specification 
+- Solar inverters conforming to the SunSpec specification
 - The Eastron SDM630 Modbus powermeter
 
 Status
@@ -30,10 +30,10 @@ License
 ![Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](docs/by-nc-nd.eu.svg)
 
     Energy readers and parsers toolkit
-    Copyright (C) 2019-2019 Niels Basjes
+    Copyright (C) 2019-2021 Niels Basjes
 
-    This work is licensed under the Creative Commons 
-    Attribution-NonCommercial-NoDerivatives 4.0 International License. 
+    This work is licensed under the Creative Commons
+    Attribution-NonCommercial-NoDerivatives 4.0 International License.
 
     You may not use this file except in compliance with the License.
     You may obtain a copy of the License at
