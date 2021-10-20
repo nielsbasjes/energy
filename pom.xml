@@ -62,11 +62,11 @@
     <!-- ============================================== -->
 
     <checkstyle-plugin.version>3.1.2</checkstyle-plugin.version>
-    <checkstyle.version>8.45</checkstyle.version>
+    <checkstyle.version>8.45.1</checkstyle.version>
     <slf4j.version>1.7.32</slf4j.version>
     <rat.version>0.13</rat.version>
     <jacoco.version>0.8.7</jacoco.version>
-    <junit5.version>5.7.2</junit5.version>
+    <junit5.version>5.8.1</junit5.version>
 
     <!-- See http://www.eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html-->
     <jacoco.surefireArgLine/>
@@ -149,7 +149,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.3.0</version>
+            <version>3.3.1</version>
             <executions>
               <execution>
                 <id>attach-javadocs</id>
@@ -622,7 +622,7 @@
         <plugin><artifactId>maven-surefire-plugin</artifactId><version>3.0.0-M5</version></plugin>
         <plugin><artifactId>maven-shade-plugin</artifactId><version>3.2.4</version></plugin>
         <plugin><artifactId>maven-jar-plugin</artifactId><version>3.2.0</version></plugin>
-        <plugin><artifactId>maven-war-plugin</artifactId><version>3.3.1</version></plugin>
+        <plugin><artifactId>maven-war-plugin</artifactId><version>3.3.2</version></plugin>
         <plugin><artifactId>maven-assembly-plugin</artifactId><version>3.3.0</version></plugin>
 
       </plugins>
