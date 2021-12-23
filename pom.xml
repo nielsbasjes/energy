@@ -57,7 +57,7 @@
     <beam.version>2.13.0</beam.version>
 -->
     <!-- Apache Nifi -->
-    <nifi.version>1.15.1</nifi.version>
+    <nifi.version>1.15.2</nifi.version>
 
     <!-- ============================================== -->
 
