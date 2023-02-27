@@ -316,7 +316,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.10.1</version>
+            <version>3.11.0</version>
             <configuration>
               <compilerVersion>${jdkLevel}</compilerVersion>
               <source>${jdkLevel}</source>
@@ -345,7 +345,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.10.1</version>
+            <version>3.11.0</version>
             <configuration>
               <compilerVersion>${jdkLevel}</compilerVersion>
               <source>${jdkLevel}</source>
@@ -614,7 +614,7 @@
         </plugin>
 
         <plugin><artifactId>maven-clean-plugin</artifactId><version>3.2.0</version></plugin>
-        <plugin><artifactId>maven-compiler-plugin</artifactId><version>3.10.1</version></plugin>
+        <plugin><artifactId>maven-compiler-plugin</artifactId><version>3.11.0</version></plugin>
         <plugin><artifactId>maven-deploy-plugin</artifactId><version>3.1.0</version></plugin>
         <plugin><artifactId>maven-install-plugin</artifactId><version>3.1.0</version></plugin>
         <plugin><artifactId>maven-resources-plugin</artifactId><version>3.3.0</version></plugin>
