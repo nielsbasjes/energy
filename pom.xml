@@ -42,6 +42,8 @@
     <!-- In order for everything to work correctly we need at least this version of maven. -->
     <maven.minimal.version>3.5.2</maven.minimal.version>
 
+    <log4j2.version>2.19.0</log4j2.version>
+
     <!-- https://github.com/steveohara/j2mod -->
     <j2mod.version>2.5.5</j2mod.version>
     <!-- ============================================== -->
@@ -193,6 +195,7 @@
                     <!-- verify that the current repository is not dirty -->
                     <validationProperty>
                       <name>Don't try to release if something has not yet been committed.</name>
+                      <!--suppress UnresolvedMavenProperty -->
                       <value>${git.dirty}</value>
                       <shouldMatchTo>false</shouldMatchTo>
                     </validationProperty>
@@ -228,12 +231,14 @@
                     <!-- verify that the current repository is not dirty -->
                     <validationProperty>
                       <name>Don't try to release if something has not yet been committed.</name>
+                      <!--suppress UnresolvedMavenProperty -->
                       <value>${git.dirty}</value>
                       <shouldMatchTo>false</shouldMatchTo>
                     </validationProperty>
                     <!-- verify that the current commit has a tag -->
                     <validationProperty>
                       <name>validating current commit has a tag</name>
+                      <!--suppress UnresolvedMavenProperty -->
                       <value>${git.closest.tag.commit.count}</value>
                       <shouldMatchTo>0</shouldMatchTo>
                     </validationProperty>
@@ -278,18 +283,6 @@
       </activation>
       <build>
         <plugins>
-          <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.eluder.coveralls</groupId>
-            <artifactId>coveralls-maven-plugin</artifactId>
-            <version>4.3.0</version>
-            <configuration>
-              <timestampFormat>EpochMillis</timestampFormat>
-            </configuration>
-          </plugin>
         </plugins>
       </build>
     </profile>
@@ -306,76 +299,7 @@
       </properties>
     </profile>
 
-    <profile>
-      <id>Build with JDK 8</id>
-      <activation>
-        <jdk>1.8</jdk>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.11.0</version>
-            <configuration>
-              <compilerVersion>${jdkLevel}</compilerVersion>
-              <source>${jdkLevel}</source>
-              <target>${jdkLevel}</target>
-              <compilerArgs>
-                <!-- Enable almost all warnings.-->
-                <!-- Ignore the 'serial' warnings about not having a serialVersionUID -->
-                <arg>-Xlint:all,-serial</arg>
-                <arg>-Werror</arg>
-              </compilerArgs>
-              <showWarnings>true</showWarnings>
-              <showDeprecation>true</showDeprecation>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
 
-    <profile>
-      <id>Build with JDK 11+</id>
-      <activation>
-        <jdk>[1.11,)</jdk>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.11.0</version>
-            <configuration>
-              <compilerVersion>${jdkLevel}</compilerVersion>
-              <source>${jdkLevel}</source>
-              <target>${jdkLevel}</target>
-              <compilerArgs>
-                <!-- Enable almost all warnings.-->
-                <!-- Ignore the 'serial' warnings about not having a serialVersionUID -->
-                <arg>-Xlint:all,-serial</arg>
-                <arg>-Werror</arg>
-                <arg>-implicit:class</arg>
-              </compilerArgs>
-              <showWarnings>true</showWarnings>
-              <showDeprecation>true</showDeprecation>
-              <release>8</release>
-            </configuration>
-          </plugin>
-
-          <!-- Never run Coveralls under JDK 11 ... it won't work -->
-          <plugin>
-            <groupId>org.eluder.coveralls</groupId>
-            <artifactId>coveralls-maven-plugin</artifactId>
-            <version>4.3.0</version>
-            <configuration>
-              <skip>true</skip>
-            </configuration>
-          </plugin>
-
-        </plugins>
-      </build>
-    </profile>
 
 
   </profiles>
@@ -383,6 +307,99 @@
   <build>
     <defaultGoal>clean package</defaultGoal>
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-toolchains-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>toolchain</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <toolchains>
+            <jdk>
+              <version>17</version>
+            </jdk>
+          </toolchains>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>8</source>
+          <release>8</release>
+          <compilerArgs>
+            <!-- Enable almost all warnings.                                                                      -->
+            <!-- Ignore 'processing' to avoid "No processor claimed any of these annotations" in several places.  -->
+            <!-- Ignore 'serial' warnings about not having a serialVersionUID                                     -->
+            <!-- Ignore 'path' warnings (some dependencies have a bad classpath in their MANIFEST.MF)             -->
+            <!--   [WARNING] [path] bad path element                                                              -->
+            <!--     "/home/nbasjes/.m2/repository/org/scala-lang/scala-compiler/2.12.7/scala-reflect.jar":       -->
+            <!--     no such file or directory                                                                    -->
+            <!--   https://stackoverflow.com/questions/41944939/maven-build-failure-involving-manifest-mf-classpath-in-dependency-jars  -->
+            <!--   https://stackoverflow.com/questions/1344202/bad-path-warning-where-is-it-coming-from                                 -->
+            <arg>-Xlint:all,-processing,-serial,-path</arg>
+            <arg>-Werror</arg>
+            <arg>-implicit:class</arg>
+          </compilerArgs>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>enforce-quality</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+
+<!--                <banDuplicateClasses>-->
+<!--                  <scopes>-->
+<!--                    <scope>compile</scope>-->
+<!--                    <scope>runtime</scope>-->
+<!--                    <scope>provided</scope>-->
+<!--                  </scopes>-->
+<!--                  <findAllDuplicates>true</findAllDuplicates>-->
+<!--                  <ignoreWhenIdentical>true</ignoreWhenIdentical>-->
+<!--                </banDuplicateClasses>-->
+
+                <enforceBytecodeVersion>
+                  <maxJdkVersion>8</maxJdkVersion>
+                </enforceBytecodeVersion>
+
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>extra-enforcer-rules</artifactId>
+            <version>1.6.2</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -534,6 +551,12 @@
 
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-toolchains-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
