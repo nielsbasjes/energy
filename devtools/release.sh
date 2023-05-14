@@ -189,18 +189,13 @@ fi
 
 # ----------------------------------------------------------------------------------------------------
 ## Update the top of the CHANGELOG.md and website frontpage
-vim README.md
-git commit -m"docs: Updated website after release" documentation/content/_index.md
+vim README.md docs/README.md
+git commit -m"docs: Updated website after release" README.md docs/README.md
 
 warn "Now go and manually push it all"
 
 # ----------------------------------------------------------------------------------------------------
 echo "git push"
 echo "git push --tags"
-
-# Publish the docker image
-RELEASEVERSION=$(git describe --abbrev=0| sed 's/^v//')
-echo "docker push \"nielsbasjes/yauaa:${RELEASEVERSION}\""
-echo "docker push \"nielsbasjes/yauaa:latest\""
 
 # ----------------------------------------------------------------------------------------------------
