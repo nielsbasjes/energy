@@ -232,26 +232,6 @@
             </executions>
           </plugin>
 
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-enforcer-plugin</artifactId>
-            <version>3.3.0</version>
-            <executions>
-              <execution>
-                <id>dependency-convergence</id>
-                <phase>validate</phase>
-                <goals>
-                  <goal>enforce</goal>
-                </goals>
-                <configuration>
-                  <rules>
-                    <dependencyConvergence/>
-                  </rules>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-
         </plugins>
       </build>
     </profile>
@@ -349,7 +329,7 @@
             <versionTag>^v([0-9]+\.[0-9]+\.[0-9]+)$</versionTag>
           </projectVersionPolicyConfig>
 
-          <preparationProfiles>prepareRelease,packageForRelease</preparationProfiles>
+          <preparationProfiles>packageForRelease</preparationProfiles>
           <preparationGoals>clean verify</preparationGoals>
           <releaseProfiles>packageForRelease,release,deployToSonatype</releaseProfiles>
           <pushChanges>false</pushChanges>
@@ -418,6 +398,7 @@
                 <enforceBytecodeVersion>
                   <maxJdkVersion>8</maxJdkVersion>
                 </enforceBytecodeVersion>
+                <dependencyConvergence/>
               </rules>
             </configuration>
           </execution>
