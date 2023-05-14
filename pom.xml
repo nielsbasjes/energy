@@ -654,7 +654,7 @@
   <scm>
     <url>https://energy.basjes.nl</url>
     <connection>scm:git:https://github.com/nielsbasjes/energy.git</connection>
-    <developerConnection>scm:git:.</developerConnection>
+    <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
   </scm>
 
 </project>
