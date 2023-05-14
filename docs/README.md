@@ -1,7 +1,6 @@
 [![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/energy/build.yml?branch=main)](https://github.com/nielsbasjes/energy/actions)
 [![Coverage Status](https://img.shields.io/codecov/c/github/nielsbasjes/energy)](https://app.codecov.io/gh/nielsbasjes/energy)
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
-
 [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.energy/energy-parent.svg)](https://central.sonatype.com/namespace/nl.basjes.energy)
 [![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/energy?label=GitHub%20stars)](https://github.com/nielsbasjes/energy/stargazers)
 [![If this project has business value for you then don't hesitate to support me with a small donation.](https://img.shields.io/badge/Donations-via%20Paypal-blue.svg)](https://www.paypal.me/nielsbasjes)
