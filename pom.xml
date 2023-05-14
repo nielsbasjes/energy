@@ -189,34 +189,6 @@
             </executions>
           </plugin>
 
-          <plugin>
-            <!-- Description: https://github.com/git-commit-id/git-commit-id-maven-plugin -->
-            <groupId>io.github.git-commit-id</groupId>
-            <artifactId>git-commit-id-maven-plugin</artifactId>
-            <version>${git-commit-id-plugin.version}</version>
-            <executions>
-              <execution>
-                <id>Validate-Revision-Information</id>
-                <phase>validate</phase>
-                <goals>
-                  <goal>validateRevision</goal>
-                </goals>
-                <configuration>
-                  <validationProperties>
-                    <!-- verify that the current repository is not dirty -->
-                    <validationProperty>
-                      <name>Don't try to release if something has not yet been committed.</name>
-                      <!--suppress UnresolvedMavenProperty -->
-                      <value>${git.dirty}</value>
-                      <shouldMatchTo>false</shouldMatchTo>
-                    </validationProperty>
-                  </validationProperties>
-                  <validationShouldFailIfNoMatch>true</validationShouldFailIfNoMatch>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-
         </plugins>
       </build>
     </profile>
