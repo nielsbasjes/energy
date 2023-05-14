@@ -45,19 +45,10 @@
     <log4j2.version>2.20.0</log4j2.version>
 
     <!-- https://github.com/steveohara/j2mod -->
-    <j2mod.version>2.5.5</j2mod.version>
+    <j2mod.version>3.1.1</j2mod.version>
     <!-- ============================================== -->
     <!-- ================ UDF Versions ================ -->
     <!-- ============================================== -->
-    <!-- Apache Flink -->
-<!--
-    <flink.version>1.8.1</flink.version>
-    <flink.scala.version>2.11</flink.scala.version>
--->
-    <!-- Apache Beam -->
-<!--
-    <beam.version>2.13.0</beam.version>
--->
     <!-- Apache Nifi -->
     <nifi.version>1.21.0</nifi.version>
 
@@ -83,6 +74,7 @@
     <version.copyright>Copyright (C) 2019-2023 Niels Basjes</version.copyright>
     <version.license>Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</version.license>
     <version.url>${project.url}</version.url>
+    <project.build.outputTimestamp>2023-01-01T00:00:00Z</project.build.outputTimestamp>
   </properties>
 
   <dependencyManagement>
@@ -114,6 +106,25 @@
   </dependencies>
 
   <profiles>
+
+    <profile>
+      <id>skipQuality</id>
+      <properties>
+        <skipTests>true</skipTests>
+        <sonar.skip>true</sonar.skip>
+        <rat.skip>true</rat.skip>
+        <checkstyle.skip>true</checkstyle.skip>
+        <jacoco.skip>true</jacoco.skip>
+        <spotbugs.skip>true</spotbugs.skip>
+        <dependency-check.skip>true</dependency-check.skip>
+        <dependency-convergence.phase>none</dependency-convergence.phase>
+        <docker-based-tests.skip>true</docker-based-tests.skip>
+        <invoker.skip>true</invoker.skip>
+        <cyclonedx.skip>true</cyclonedx.skip>
+        <gpg.skip>true</gpg.skip>
+      </properties>
+    </profile>
+
     <profile>
       <id>packageForRelease</id>
       <build>
