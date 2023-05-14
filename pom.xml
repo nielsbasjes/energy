@@ -17,14 +17,12 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   -->
 
-<project
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>nl.basjes.energy</groupId>
   <artifactId>energy-parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
 
   <packaging>pom</packaging>
 
@@ -62,7 +60,7 @@
     <junit5.version>5.9.3</junit5.version>
 
     <!-- See http://www.eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html-->
-    <jacoco.surefireArgLine/>
+    <jacoco.surefireArgLine />
     <argLine>@{jacoco.surefireArgLine} -Xmx2048m</argLine>
 
     <sonar.language>java</sonar.language>
@@ -74,7 +72,7 @@
     <version.copyright>Copyright (C) 2019-2023 Niels Basjes</version.copyright>
     <version.license>Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</version.license>
     <version.url>${project.url}</version.url>
-    <project.build.outputTimestamp>2023-01-01T00:00:00Z</project.build.outputTimestamp>
+    <project.build.outputTimestamp>2023-05-14T14:46:04Z</project.build.outputTimestamp>
   </properties>
 
   <dependencyManagement>
@@ -398,7 +396,7 @@
                 <enforceBytecodeVersion>
                   <maxJdkVersion>8</maxJdkVersion>
                 </enforceBytecodeVersion>
-                <dependencyConvergence/>
+                <dependencyConvergence />
               </rules>
             </configuration>
           </execution>
@@ -439,7 +437,7 @@
             <license implementation="org.apache.rat.analysis.license.SimplePatternBasedLicense">
               <licenseFamilyCategory>CC-BY-NC-ND</licenseFamilyCategory>
               <licenseFamilyName>Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International</licenseFamilyName>
-              <notes></notes>
+              <notes />
               <patterns>
                 <pattern>Attribution-NonCommercial-NoDerivatives</pattern>
               </patterns>
@@ -636,6 +634,7 @@
     <url>https://energy.basjes.nl</url>
     <connection>scm:git:https://github.com/nielsbasjes/energy.git</connection>
     <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
+    <tag>v0.0.1</tag>
   </scm>
 
 </project>

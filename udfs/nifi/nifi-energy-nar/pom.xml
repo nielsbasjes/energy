@@ -15,18 +15,17 @@
   ~ distributed under the License is distributed on an AS IS BASIS,
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>nl.basjes.energy.nifi</groupId>
     <artifactId>energy-nifi-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
   </parent>
 
   <artifactId>nifi-energy-nar</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>nar</packaging>
 
   <name>Energy : UDFs : Apache Nifi : Packaging (NAR)</name>
@@ -41,7 +40,7 @@
     <dependency>
       <groupId>nl.basjes.energy.nifi</groupId>
       <artifactId>nifi-energy-processors</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>0.0.1</version>
     </dependency>
   </dependencies>
 
@@ -66,7 +65,7 @@
           <doUpdate>false</doUpdate>
           <shortRevisionLength>7</shortRevisionLength>
           <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
-          <revisionOnScmFailure/>
+          <revisionOnScmFailure />
           <buildNumberPropertyName>buildRevision</buildNumberPropertyName>
           <scmBranchPropertyName>buildBranch</scmBranchPropertyName>
         </configuration>
@@ -106,6 +105,7 @@
     <url>https://energy.basjes.nl</url>
     <connection>scm:git:https://github.com/nielsbasjes/energy.git</connection>
     <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
+    <tag>v0.0.1</tag>
   </scm>
 
 </project>

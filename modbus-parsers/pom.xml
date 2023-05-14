@@ -16,13 +16,11 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <artifactId>energy-parent</artifactId>
     <groupId>nl.basjes.energy</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -161,6 +159,7 @@
     <url>https://energy.basjes.nl</url>
     <connection>scm:git:https://github.com/nielsbasjes/energy.git</connection>
     <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
+    <tag>v0.0.1</tag>
   </scm>
 
 </project>
