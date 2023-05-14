@@ -22,7 +22,8 @@ Currently two mappings have been written
 
 Status
 ====
-Under development, unfinished, unstable, not yet released.
+Under development, unfinished, unstable, only a pre-ALPHA version was released.
+
 
 Or simply put: **Works on my machine ... will probably melt yours ...**
 

@@ -22,7 +22,7 @@ Currently two mappings have been written
 
 Status
 ====
-Under development, unfinished, unstable, not yet released.
+Under development, unfinished, unstable, only a pre-ALPHA version was released.
 
 Or simply put: **Works on my machine ... will probably melt yours ...**
 
@@ -60,9 +60,9 @@ This library retrieves the data per model.
 Using it in your project
 
     <dependency>
-      <groupId>nl.basjes.sunspec</groupId>
-      <artifactId>sunspec</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <groupId>nl.basjes.energy</groupId>
+      <artifactId>modbus-energy-parser</artifactId>
+      <version>0.0.1</version>
     </dependency>
 
 Make the connection
