@@ -618,7 +618,7 @@ public class SunSpecToJava {
 
                 // Create the toHashMap function
                 sb.append("        /**\n");
-                sb.append("         * The returned value can be Short, Integer, Long, String, Float, Double, InetAddress and in some cases a custom enum or EnumSet<custom enum>.\n");
+                sb.append("         * The returned value can be Short, Integer, Long, String, Float, Double, InetAddress and in some cases a custom enum or EnumSet&lt;custom enum&gt;.\n");
                 sb.append("         */\n");
                 sb.append("        public Map<String, Object> toHashMap(byte[] dataBlock").append(declRepeatParam).append(") ").append(genThrows(throwsToString)).append(" {\n");
                 sb.append("            Map<String, Object> result = new LinkedHashMap<>();\n");
