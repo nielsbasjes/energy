@@ -62,7 +62,7 @@ Using it in your project
     <dependency>
       <groupId>nl.basjes.sunspec</groupId>
       <artifactId>sunspec</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
 Make the connection
