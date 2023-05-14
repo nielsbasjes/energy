@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Energy readers and parsers toolkit
-# Copyright (C) 2019-2021 Niels Basjes
+# Copyright (C) 2019-2023 Niels Basjes
 #
 # This work is licensed under the Creative Commons
 # Attribution-NonCommercial-NoDerivatives 4.0 International License.
