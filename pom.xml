@@ -52,7 +52,7 @@
 
     <!-- ============================================== -->
 
-    <checkstyle-plugin.version>3.2.2</checkstyle-plugin.version>
+    <checkstyle-plugin.version>3.3.0</checkstyle-plugin.version>
     <checkstyle.version>10.11.0</checkstyle.version>
     <slf4j.version>2.0.7</slf4j.version>
     <rat.version>0.15</rat.version>
