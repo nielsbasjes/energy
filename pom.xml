@@ -54,7 +54,7 @@
 
     <checkstyle-plugin.version>3.3.0</checkstyle-plugin.version>
     <checkstyle.version>10.12.3</checkstyle.version>
-    <slf4j.version>2.0.7</slf4j.version>
+    <slf4j.version>2.0.9</slf4j.version>
     <rat.version>0.15</rat.version>
     <jacoco.version>0.8.10</jacoco.version>
     <junit5.version>5.10.0</junit5.version>
@@ -367,7 +367,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.4.0</version>
+        <version>3.4.1</version>
         <dependencies>
           <dependency>
             <groupId>org.codehaus.mojo</groupId>
