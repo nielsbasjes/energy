@@ -39,6 +39,12 @@
       <groupId>nl.basjes.antlr</groupId>
       <artifactId>antlr4-pvisitor</artifactId>
       <version>${antlr4-pvisitor.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -92,6 +98,12 @@
             <groupId>nl.basjes.antlr</groupId>
             <artifactId>antlr4-pvisitor</artifactId>
             <version>${antlr4-pvisitor.version}</version>
+            <exclusions>
+              <exclusion>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+              </exclusion>
+            </exclusions>
           </dependency>
         </dependencies>
         <executions>
