@@ -40,7 +40,7 @@
     <!-- In order for everything to work correctly we need at least this version of maven. -->
     <maven.minimal.version>3.5.2</maven.minimal.version>
 
-    <log4j2.version>2.20.0</log4j2.version>
+    <log4j2.version>2.21.0</log4j2.version>
 
     <!-- https://github.com/steveohara/j2mod -->
     <j2mod.version>3.1.1</j2mod.version>
@@ -56,7 +56,7 @@
     <checkstyle.version>10.12.4</checkstyle.version>
     <slf4j.version>2.0.9</slf4j.version>
     <rat.version>0.15</rat.version>
-    <jacoco.version>0.8.10</jacoco.version>
+    <jacoco.version>0.8.11</jacoco.version>
     <junit5.version>5.10.0</junit5.version>
 
     <!-- See http://www.eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html-->
