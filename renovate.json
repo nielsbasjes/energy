@@ -19,7 +19,7 @@
     },
     {
       "description": "Disable major updates for Spring because they need a newer Java version",
-      "matchPackageNames": ["org.springframework"],
+      "matchPackagePrefixes": ["org.springframework"],
       "matchUpdateTypes": ["major"],
       "enabled": false
     },
