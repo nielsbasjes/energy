@@ -18,6 +18,12 @@
       "enabled": false
     },
     {
+      "description": "Disable major updates for Spring because they need a newer Java version",
+      "matchPackageNames": ["org.springframework"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
       "description": "Disable automatic updates for the Antlr because of the very tightly coupled visitor",
       "matchPackagePrefixes": ["nl.basjes.antlr", "org.antlr"],
       "matchUpdateTypes": ["major", "minor", "patch", "pin"],
