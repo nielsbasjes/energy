@@ -54,7 +54,7 @@
 
     <checkstyle-plugin.version>3.3.1</checkstyle-plugin.version>
     <checkstyle.version>10.12.6</checkstyle.version>
-    <slf4j.version>2.0.9</slf4j.version>
+    <slf4j.version>2.0.10</slf4j.version>
     <rat.version>0.15</rat.version>
     <jacoco.version>0.8.11</jacoco.version>
     <junit5.version>5.10.1</junit5.version>
