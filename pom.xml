@@ -409,45 +409,37 @@
         <artifactId>apache-rat-plugin</artifactId>
         <version>${rat.version}</version>
         <inherited>false</inherited>
-        <!-- https://issues.apache.org/jira/browse/RAT-158 -->
-        <dependencies>
-          <dependency>
-            <groupId>org.apache.maven.doxia</groupId>
-            <artifactId>doxia-core</artifactId>
-            <version>1.12.0</version>
-            <exclusions>
-              <exclusion>
-                <groupId>xerces</groupId>
-                <artifactId>xercesImpl</artifactId>
-              </exclusion>
-            </exclusions>
-          </dependency>
-        </dependencies>
         <executions>
           <execution>
-            <phase>test</phase>
+            <phase>validate</phase>
             <goals>
               <goal>check</goal>
             </goals>
           </execution>
         </executions>
         <configuration>
+<!--          <addDefaultLicenses>false</addDefaultLicenses>-->
           <addDefaultLicenseMatchers>false</addDefaultLicenseMatchers>
+          <families>
+            <family>
+              <id>CC</id>
+              <name>Creative Commons</name>
+            </family>
+          </families>
           <licenses>
-            <license implementation="org.apache.rat.analysis.license.SimplePatternBasedLicense">
-              <licenseFamilyCategory>CC-BY-NC-ND</licenseFamilyCategory>
-              <licenseFamilyName>Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International</licenseFamilyName>
-              <notes />
-              <patterns>
-                <pattern>Attribution-NonCommercial-NoDerivatives</pattern>
-              </patterns>
+            <license>
+              <family>CC</family>
+              <id>CC-BY-NC-ND</id>
+              <notes/>
+              <name>Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International</name>
+              <any>
+                <text>Attribution-NonCommercial-NoDerivatives</text>
+              </any>
             </license>
           </licenses>
-          <licenseFamilies>
-            <licenseFamily implementation="org.apache.rat.license.SimpleLicenseFamily">
-              <familyName>Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International</familyName>
-            </licenseFamily>
-          </licenseFamilies>
+          <approvedLicenses>
+            <approvedLicense>CC</approvedLicense>
+          </approvedLicenses>
           <consoleOutput>true</consoleOutput>
           <excludeSubProjects>false</excludeSubProjects>
           <excludes>
