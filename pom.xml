@@ -40,7 +40,7 @@
     <!-- In order for everything to work correctly we need at least this version of maven. -->
     <maven.minimal.version>3.5.2</maven.minimal.version>
 
-    <log4j2.version>2.22.1</log4j2.version>
+    <log4j2.version>2.23.0</log4j2.version>
 
     <!-- https://github.com/steveohara/j2mod -->
     <j2mod.version>3.1.1</j2mod.version>
@@ -584,7 +584,7 @@
         <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-resources-plugin</artifactId><version>3.3.1</version></plugin>
         <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-site-plugin</artifactId><version>3.12.1</version></plugin>
         <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><version>3.2.5</version></plugin>
-        <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-shade-plugin</artifactId><version>3.5.1</version></plugin>
+        <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-shade-plugin</artifactId><version>3.5.2</version></plugin>
         <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-jar-plugin</artifactId><version>3.3.0</version></plugin>
         <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-war-plugin</artifactId><version>3.4.0</version></plugin>
         <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-assembly-plugin</artifactId><version>3.6.0</version></plugin>
