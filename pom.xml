@@ -40,7 +40,7 @@
     <!-- In order for everything to work correctly we need at least this version of maven. -->
     <maven.minimal.version>3.5.2</maven.minimal.version>
 
-    <log4j2.version>2.23.0</log4j2.version>
+    <log4j2.version>2.23.1</log4j2.version>
 
     <!-- https://github.com/steveohara/j2mod -->
     <j2mod.version>3.1.1</j2mod.version>
@@ -372,7 +372,7 @@
           <dependency>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>extra-enforcer-rules</artifactId>
-            <version>1.7.0</version>
+            <version>1.8.0</version>
           </dependency>
         </dependencies>
         <executions>
