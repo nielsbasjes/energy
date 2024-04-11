@@ -31,7 +31,7 @@
   <properties>
     <antlr.version>4.12.0</antlr.version>
     <antlr4-pvisitor.version>1.0.1-${antlr.version}</antlr4-pvisitor.version>
-    <spring.version>5.3.33</spring.version>
+    <spring.version>5.3.34</spring.version>
   </properties>
 
   <dependencies>
