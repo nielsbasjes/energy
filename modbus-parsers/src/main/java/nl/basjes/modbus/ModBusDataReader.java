@@ -174,13 +174,14 @@ public class ModBusDataReader implements AutoCloseable {
 
     public byte[] getRawRegisterBytes(int base, int len) throws ModbusException {
         byte[] bytes = new byte[len * 2];
-
+        int newBase=base;   
         int i = 0;
         int remaining = len;
         while (remaining > 0) {
             int readSize = Math.min(remaining, maxRegistersPerModbusRequest);
             remaining -= readSize;
-            final InputRegister[] registers = read(base, readSize);
+            final InputRegister[] registers = read(newBase, readSize);
+            newBase=base+readSize;
             for (InputRegister register : registers) {
                 byte[] registerBytes = register.toBytes();
                 bytes[i++] = registerBytes[0];
