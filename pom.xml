@@ -22,7 +22,7 @@
 
   <groupId>nl.basjes.energy</groupId>
   <artifactId>energy-parent</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3-SNAPSHOT</version>
 
   <packaging>pom</packaging>
 
@@ -72,7 +72,7 @@
     <version.copyright>Copyright (C) 2019-2023 Niels Basjes</version.copyright>
     <version.license>Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</version.license>
     <version.url>${project.url}</version.url>
-    <project.build.outputTimestamp>2024-07-22T11:12:56Z</project.build.outputTimestamp>
+    <project.build.outputTimestamp>2024-07-22T11:13:35Z</project.build.outputTimestamp>
   </properties>
 
   <dependencyManagement>
@@ -626,7 +626,7 @@
     <url>https://energy.basjes.nl</url>
     <connection>scm:git:https://github.com/nielsbasjes/energy.git</connection>
     <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
-    <tag>v0.0.2</tag>
+    <tag>HEAD</tag>
   </scm>
 
 </project>
