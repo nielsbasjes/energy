@@ -20,7 +20,7 @@
   <parent>
     <artifactId>energy-parent</artifactId>
     <groupId>nl.basjes.energy</groupId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -159,7 +159,7 @@
     <url>https://energy.basjes.nl</url>
     <connection>scm:git:https://github.com/nielsbasjes/energy.git</connection>
     <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v0.0.2</tag>
   </scm>
 
 </project>
