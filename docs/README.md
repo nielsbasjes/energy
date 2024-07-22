@@ -62,7 +62,7 @@ Using it in your project
     <dependency>
       <groupId>nl.basjes.energy</groupId>
       <artifactId>modbus-energy-parser</artifactId>
-      <version>0.0.1</version>
+      <version>0.0.2</version>
     </dependency>
 
 Make the connection
