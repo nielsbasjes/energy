@@ -48,7 +48,7 @@
     <!-- ================ UDF Versions ================ -->
     <!-- ============================================== -->
     <!-- Apache Nifi -->
-    <nifi.version>1.28.0</nifi.version>
+    <nifi.version>2.0.0</nifi.version>
 
     <!-- ============================================== -->
 
@@ -574,7 +574,7 @@
         <plugin>
           <groupId>org.sonarsource.scanner.maven</groupId>
           <artifactId>sonar-maven-plugin</artifactId>
-          <version>4.0.0.4121</version>
+          <version>5.0.0.4389</version>
         </plugin>
 
         <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-clean-plugin</artifactId><version>3.4.0</version></plugin>
