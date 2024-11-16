@@ -46,6 +46,25 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-toolchains-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>select-jdk-toolchain</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <toolchains>
+            <jdk>
+              <version>[21,22)</version>
+            </jdk>
+          </toolchains>
+        </configuration>
+      </plugin>
+
       <!-- Makes buildRevision and buildBranch available to the NAR Plugin so they can be populated in the MANIFEST -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
