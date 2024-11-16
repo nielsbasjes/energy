@@ -179,10 +179,10 @@ public class FetchSDM630 extends AbstractProcessor {
         .Builder().name("ENCODING")
         .displayName("Encoding")
         .required(true)
-        .defaultValue(""+SERIAL_ENCODING_RTU)
+        .defaultValue(SERIAL_ENCODING_RTU)
         .allowableValues(
-            new AllowableValue(""+SERIAL_ENCODING_ASCII, "ASCII Encoding"),
-            new AllowableValue(""+SERIAL_ENCODING_RTU,   "RTU Encoding")
+            new AllowableValue(SERIAL_ENCODING_ASCII, "ASCII Encoding"),
+            new AllowableValue(SERIAL_ENCODING_RTU,   "RTU Encoding")
         )
         .build();
 
