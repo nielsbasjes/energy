@@ -259,14 +259,14 @@
         <executions>
           <execution>
             <goals>
-              <goal>toolchain</goal>
+              <goal>select-jdk-toolchain</goal>
             </goals>
           </execution>
         </executions>
         <configuration>
           <toolchains>
             <jdk>
-              <version>17</version>
+              <version>[17,18)</version>
             </jdk>
           </toolchains>
         </configuration>
