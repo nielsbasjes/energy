@@ -41,7 +41,7 @@ jobs:
 
 
     - name: 'Setup: Install JDK 8, 11, 17 & 21'
-      uses: actions/setup-java@7a6d8a8234af8eb26422e24e3006232cccaa061b # v4.6.0
+      uses: actions/setup-java@3a4f6e1af504cf6a31855fa899c6aa5355ba6c12 # v4.7.0
       with:
         distribution: 'temurin'
         java-version: |
@@ -54,6 +54,6 @@ jobs:
       run: mvn -B install
 
     - name: 'Codecov'
-      uses: codecov/codecov-action@5a605bd92782ce0810fa3b8acc235c921b497052 # v5.2.0
+      uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3 # v5.3.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
