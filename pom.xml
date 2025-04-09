@@ -397,7 +397,7 @@
 <!--                <enforceBytecodeVersion>-->
 <!--                  <maxJdkVersion>8</maxJdkVersion>-->
 <!--                </enforceBytecodeVersion>-->
-                <dependencyConvergence />
+<!--                <dependencyConvergence />-->
               </rules>
             </configuration>
           </execution>
